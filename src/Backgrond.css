@@ -1,0 +1,68 @@
+.backhh {
+  flex-wrap: wrap;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  z-index: -5;
+  overflow: hidden;
+}
+.boll1,
+.boll2,
+.boll3,
+.boll4 {
+  width: 250px;
+  height: 250px;
+  min-width: 25;
+  border-radius: 50%;
+  background-color: #c3d1da;
+  margin: auto;
+  animation-name: tr;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  z-index: -6;
+}
+.boll4,
+.boll2 {
+  animation-name: rt;
+}
+.fff {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backdrop-filter: blur(100px);
+  z-index: -5;
+}
+@keyframes rt {
+  to {
+    transform: translatey(300px);
+    background-color: red;
+  }
+  from {
+    transform: translatey(-300px);
+    background-color: blue;
+  }
+}
+@keyframes tr {
+  to {
+    transform: translatey(-300px);
+    background-color: blue;
+  }
+  from {
+    transform: translatey(300px);
+    background-color: red;
+  }
+}
+@media (max-width: 500px) {
+  .backhh {
+    flex-wrap: wrap;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    overflow: hidden;
+  }
+}
