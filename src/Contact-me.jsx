@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./Contact-Me.css";
+import "./Contact-me.css";
 
 function ContactMe({ supabase }) {
   const n = useRef(null);
