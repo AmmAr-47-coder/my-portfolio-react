@@ -7,7 +7,7 @@ function MySkills() {
         <div className="card bg-transparent">
           <div className="cube">
             <div className="front imgmy">
-              <img src="/public/html.png" alt="es" />
+              <img src="/html.png" alt="es" />
             </div>
             <div className="back imgmy">
               <img src="/public/css.png" alt="es" />
