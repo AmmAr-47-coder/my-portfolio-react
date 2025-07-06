@@ -10,19 +10,19 @@ function MySkills() {
               <img src="/html.png" alt="es" />
             </div>
             <div className="back imgmy">
-              <img src="/public/css.png" alt="es" />
+              <img src="/css.png" alt="es" />
             </div>
             <div className="right imgmy">
-              <img src="/public/js.png" alt="es" />
+              <img src="/js.png" alt="es" />
             </div>
             <div className="left imgmy">
-              <img src="/public/react.png" alt="es" />
+              <img src="/react.png" alt="es" />
             </div>
             <div className="top imgmy">
-              <img src="/public/git.png" alt="es" />
+              <img src="/git.png" alt="es" />
             </div>
             <div className="bottom imgmy">
-              <img src="/public/github.png" alt="es" />
+              <img src="/github.png" alt="es" />
             </div>
           </div>
         </div>
