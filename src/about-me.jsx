@@ -24,8 +24,7 @@ function Aboutme({ img, admin, textdata, supabase }) {
       <section className="Aboutme">
         <h1>About me</h1>
         <div className="about">
-          <div className="img">
-            <div className="loading" id="load2"></div>
+          <div className="img" data-aos="fade-right">
             {imageUrl && (
               <img
                 src={imageUrl}
@@ -37,7 +36,7 @@ function Aboutme({ img, admin, textdata, supabase }) {
               />
             )}
           </div>
-          <div className="p">
+          <div className="p" data-aos="fade-left" data-aos-delay="250">
             {admin && (
               <>
                 {!editing ? (

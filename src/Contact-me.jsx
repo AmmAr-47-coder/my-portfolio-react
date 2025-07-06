@@ -26,7 +26,7 @@ function ContactMe({ supabase }) {
   }
 
   return (
-    <div className="ggg" id="ggg">
+    <div className="ggg" id="ggg" data-aos="zoom-in">
       <h1 className="hy">Contact Me</h1>
 
       <div className="contact-container">

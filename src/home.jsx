@@ -1,9 +1,17 @@
 import "./home.css";
-import { useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useRef, useEffect } from "react";
 function Home({ img, admin, supabase }) {
   const g = useRef(null);
   const imginp = useRef(null);
   const o = useRef(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -92,7 +100,7 @@ function Home({ img, admin, supabase }) {
   return (
     <div>
       <div className="home" id="dd">
-        <div className="img fade-left" id="img">
+        <div className="img fade-left" data-aos="fade-left" id="img">
           <div className="loading" id="load"></div>
           <img
             src={img.map((item) => item.url)}
@@ -108,7 +116,7 @@ function Home({ img, admin, supabase }) {
               id="btmm"
               onClick={() => {
                 o.current.style.display = "none";
-                saveimg()
+                saveimg();
               }}
             >
               save image
@@ -118,7 +126,7 @@ function Home({ img, admin, supabase }) {
               onClick={() => {
                 o.current.style.display = "none";
                 g.current.src = `${img.map((item) => item.url)}`;
-                formimg.reset()
+                formimg.reset();
               }}
             >
               cancel
@@ -141,10 +149,21 @@ function Home({ img, admin, supabase }) {
           )}
         </div>
         <div className="pro">
-          <h1 id="ffdf">Hello my friend!</h1>
-          <p id="ffdf2">My name is Ammar</p>
-          <p id="ffdf3">I'm Front-end Developer</p>
-          <div id="ffdf4" className="w">
+          <h1 id="ffdf" data-aos="fade-right" data-aos-delay="250">
+            Hello my friend!
+          </h1>
+          <p id="ffdf2" data-aos="fade-right" data-aos-delay="500">
+            My name is Ammar
+          </p>
+          <p id="ffdf3" data-aos="fade-right" data-aos-delay="750">
+            I'm Front-end Developer
+          </p>
+          <div
+            id="ffdf4"
+            className="w"
+            data-aos="fade-right"
+            data-aos-delay="1000"
+          >
             <p>I learned</p>
             <div className="h">
               <a
@@ -157,7 +176,7 @@ function Home({ img, admin, supabase }) {
               </a>
             </div>
           </div>
-          <div className="text1">
+          <div className="text1" data-aos="fade-right" data-aos-delay="1250">
             <div className="text2">
               <div className="text3">
                 <a href="https://www.facebook.com/ammar.shabaan.104">

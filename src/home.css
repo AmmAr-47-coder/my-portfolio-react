@@ -84,6 +84,11 @@
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-out;
 }
+@keyframes ltr {
+  0% {
+    transform: translateX(-150px);
+  }
+}
 .loading {
   background: linear-gradient(to left, white, rgb(163, 163, 163), white);
   width: 100%;
@@ -95,7 +100,7 @@
   background-position: 200px;
 }
 @keyframes loading {
-  from{
+  from {
     background-position: -700px;
   }
 }

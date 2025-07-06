@@ -1,7 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import "./myproject.css";
+import AOS from "aos";
 
 function MyProject({ supabase, admin }) {
+    useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }, []);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const load = useRef({});
@@ -115,7 +122,7 @@ function MyProject({ supabase, admin }) {
           <div className="proo">
             {error && <p>Error: {error.message}</p>}
             {data.map((i) => (
-              <div className="proj" key={i.id} ref={(el)=>pro.current[i.id] = el}>
+              <div className="proj" key={i.id} ref={(el)=>pro.current[i.id] = el} data-aos="fade-left">
                 {admin &&<button className="del" onClick={()=>del(i.id)} >Delete</button>}
                 <div className="imgp">
                   <div

@@ -28,7 +28,7 @@ function Navbar({ admin, setAdmin, p, data, supabase }) {
   return (
     <div className="navh">
       <nav>
-        <span className="title">My Portfolio</span>
+        <span className="title"data-aos="fade-up">My Portfolio</span>
 
         {admin && (
           <>
@@ -114,12 +114,12 @@ function Navbar({ admin, setAdmin, p, data, supabase }) {
               pas.current.focus();
             }}
           >
-            <a href="#" ref={tt}>Login</a>
+            <a href="#" ref={tt}data-aos="fade-up"data-aos-delay="1250">Login</a>
           </span>
-          <span id="sfdf2"><a href="#avv">About me</a></span>
-          <span id="sfdf3"><a href="#none">My Skills</a></span>
-          <span id="sfdf4"><a href="#my">My Project</a></span>
-          <span id="sfdf5"><a href="#ggg">Contact Me</a></span>
+          <span id="sfdf2"><a href="#avv" data-aos="fade-up"data-aos-delay="1500">About me</a></span>
+          <span id="sfdf3"><a href="#none" data-aos="fade-up"data-aos-delay="1750">My Skills</a></span>
+          <span id="sfdf4"><a href="#my" data-aos="fade-up"data-aos-delay="2000">My Project</a></span>
+          <span id="sfdf5"><a href="#ggg" data-aos="fade-up"data-aos-delay="2250">Contact Me</a></span>
         </div>
         <div className="navside" ref={ns}>
           <div>
@@ -134,7 +134,7 @@ function Navbar({ admin, setAdmin, p, data, supabase }) {
         </div>
 
         <button
-          className="btnnav material-symbols-outlined"
+          className="btnnav material-symbols-outlined"data-aos="fade-up"data-aos-delay="500"
           onClick={() => ns.current.classList.toggle("navsidew")}
         >
           dehaze
