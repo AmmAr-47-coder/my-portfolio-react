@@ -21,7 +21,7 @@ function Aboutme({ img, admin, textdata, supabase }) {
 
   return (
     <div>
-      <section className="Aboutme">
+      <section className="Aboutme" id="avv">
         <h1>About me</h1>
         <div className="about">
           <div className="img" data-aos="fade-right">
