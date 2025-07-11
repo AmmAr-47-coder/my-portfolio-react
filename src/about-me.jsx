@@ -1,69 +1,73 @@
 import "./about-me.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 function Aboutme({ img, admin, textdata, supabase }) {
-  const [editing, setEditing] = useState(false);
-  const [text, setText] = useState("");
-  const textareaRef = useRef(null);
-
+  const h = useRef(null);
   useEffect(() => {
-    if (textdata && textdata.length > 0) {
-      setText(textdata[0].text);
-    }
-  }, [textdata]);
-
-  const handleSave = async () => {
-    setEditing(false);
-    await supabase.from("text").update({ text }).eq("id", 1);
-  };
-
-  const imageUrl = img && img.length > 0 ? img[0].url : "";
-
+    h.current.src = `${img.map((item) => item.url)}`;
+  }, [img]);
   return (
     <div>
-      <section className="Aboutme" id="avv">
-        <h1>About me</h1>
+      <section className="Aboutme">
+        <h1 id="avv">About me</h1>
         <div className="about">
-          <div className="img" data-aos="fade-right">
-            {imageUrl && (
-              <img
-                src={imageUrl}
-                alt="profile"
-                onLoad={() => {
-                  const loader = document.getElementById("load2");
-                  if (loader) loader.style.opacity = 0;
-                }}
-              />
-            )}
+          <div className="img" ref={h} id="img">
+            <div className="loading" id="load2"></div>
+            <img
+              src={img.map((item) => item.url)}
+              alt="kjh"
+              onLoad={() => (load2.style.opacity = 0)}
+            />
           </div>
-          <div className="p" data-aos="zoom-in" data-aos-delay="250">
+          <div className="p">
             {admin && (
               <>
-                {!editing ? (
-                  <button className="edit" onClick={() => setEditing(true)}>
-                    Edit
-                  </button>
-                ) : (
-                  <button className="save" onClick={handleSave}>
-                    Save
-                  </button>
-                )}
+                <button
+                  className="edit"
+                  id="ed"
+                  onClick={() => {
+                    sas.style.display = "block";
+                    prr.style.display = "block";
+                    prr.focus();
+                    pr.style.display = "none";
+                    ed.style.right = "80px";
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  className="save"
+                  onClick={async () => {
+                    pr.style.display = "block";
+                    prr.style.display = "none";
+                    sas.style.display = "none";
+                    ed.style.right = "0";
+                    let ttt = prr.value;
+                    const { data: textdata, error: texterror } = await supabase
+                      .from("text")
+                      .update({ text: ttt })
+                      .eq("id", 1);
+                  }}
+                  id="sas"
+                >
+                  Save
+                </button>
               </>
             )}
-            {!editing ? (
-              <p className="ppp">{text}</p>
-            ) : (
-              <textarea
-                ref={textareaRef}
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              ></textarea>
-            )}
+
+            <p className="ppp" id="pr">
+              {textdata.map((f) => f.text)}
+            </p>
+            <textarea
+              onChange={(e) => e.target.value}
+              defaultValue={textdata.map((f) => f.text)}
+              name=""
+              id="prr"
+            ></textarea>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
 export default Aboutme;
