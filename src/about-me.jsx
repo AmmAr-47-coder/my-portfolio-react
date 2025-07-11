@@ -36,7 +36,7 @@ function Aboutme({ img, admin, textdata, supabase }) {
               />
             )}
           </div>
-          <div className="p" data-aos="fade-left" data-aos-delay="250">
+          <div className="p" data-aos="zoom-in" data-aos-delay="250">
             {admin && (
               <>
                 {!editing ? (
