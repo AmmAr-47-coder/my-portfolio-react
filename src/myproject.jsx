@@ -122,7 +122,7 @@ function MyProject({ supabase, admin }) {
           <div className="proo">
             {error && <p>Error: {error.message}</p>}
             {data.map((i) => (
-              <div className="proj" key={i.id} ref={(el)=>pro.current[i.id] = el} data-aos="fade-left">
+              <div className="proj" key={i.id} ref={(el)=>pro.current[i.id] = el} data-aos="zoom-in">
                 {admin &&<button className="del" onClick={()=>del(i.id)} >Delete</button>}
                 <div className="imgp">
                   <div
