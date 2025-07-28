@@ -140,7 +140,7 @@ nav a:hover::before {
   transition: 150ms;
   left: 0;
   top: 0;
-  border-radius: 30px;
+  border-radius:0 30px 30px 0;
   margin: 10px;
 
   div {
