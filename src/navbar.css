@@ -132,6 +132,7 @@ nav a:hover::before {
   padding-left: 50px;
 }
 .navside {
+  
   position: absolute;
   background-color: #444444d4;
   overflow: hidden;
@@ -142,6 +143,7 @@ nav a:hover::before {
   margin: 10px;
   height: 100vh;
   div {
+    width: 25%;
     flex-direction: column;
     background-color: rgb(13, 18, 32);
     border-radius:0 30px 30px 0;
