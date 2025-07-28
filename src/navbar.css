@@ -237,6 +237,15 @@ nav a:hover::before {
   }
 }
 @media (max-width: 500px) {
+  .navside{
+  div {
+    width: 45%;
+    height: 85%;
+    span{
+      margin: 20px 10px;
+    }
+  }
+}
   .title {
     font-size: 20px;
   }
