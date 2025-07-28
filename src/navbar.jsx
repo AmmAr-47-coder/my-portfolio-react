@@ -121,7 +121,7 @@ function Navbar({ admin, setAdmin, p, data, supabase }) {
           <span id="sfdf4"><a href="#my" data-aos="fade-up"data-aos-delay="2000">My Project</a></span>
           <span id="sfdf5"><a href="#ggg" data-aos="fade-up"data-aos-delay="2250">Contact Me</a></span>
         </div>
-        <div className="navside" ref={ns}>
+        <div className="navside" ref={ns} onClick={() => ns.current.classList.toggle("navsidew")}>
           <div>
             <span onClick={() => inps.current.classList.toggle("inputno")}>
               <a ref={t}>Login</a>
