@@ -145,11 +145,14 @@ nav a:hover::before {
   margin: 0;
   padding: 0;
   height: 100vh;
+  border: none;
   div {
     width: 40%;
+    margin: 0;
     flex-direction: column;
     background-color: rgb(13, 18, 32);
     border-radius:0 30px 30px 0;
+    border: 2px solid white;
     span{
       margin: 20px 10px;
     }
