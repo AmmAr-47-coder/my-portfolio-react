@@ -1,0 +1,74 @@
+.contact-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: rgb(13, 18, 32);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0px 20px rgba(155, 155, 155, 0.596);
+  text-align: center;
+}
+.ggg{
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.success-message {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 0px;
+  background-color: rgb(13, 18, 32);
+  overflow: hidden;
+  border-radius: 15px;
+  text-align: center;
+  color: #2c662d;
+  font-family: Arial, sans-serif;
+  transition: 200ms;
+}
+.mss {
+  height: 200px;
+  padding: 40px;
+}
+
+.hy {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 30px;
+  align-items: center;
+}
+.contact-container h1 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  color: white;
+  background-color: transparent;
+}
+
+.contact-form button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #2980b9;
+}

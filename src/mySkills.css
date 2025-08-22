@@ -1,0 +1,81 @@
+.myskills {
+  height: 100%;
+  margin: auto;
+  display: grid;
+  max-width: 1400px;
+  grid-template-columns: 1fr;
+  h1 {
+    margin: 30px 0;
+    text-align: center;
+    font-size: 30px;
+  }
+}
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 400px;
+  margin: auto;
+  perspective: 600px;
+}
+.cube {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  transform-style: preserve-3d;
+  animation: spin 10s infinite linear;
+}
+.imgmy {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border: 2px solid white;
+  img {
+    width: 100%;
+    max-width: 250px;
+    &&:hover {
+      transition: 500ms linear;
+      filter: drop-shadow(0 0 30px rgb(255, 255, 255));
+    }
+  }
+}
+.front {
+  transform: translateZ(100px);
+}
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+@media (max-width: 700px) {
+}
+@media (max-width: 821px) {
+  .myskills {
+    height: 100%;
+  }
+}
