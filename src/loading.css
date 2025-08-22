@@ -4,18 +4,51 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.tu {
+  font-size: 130px;
+  color: green;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: p 1.5s infinite linear;
+  height: 150px;
 }
 .loo {
-    font-size: 40px;
-    text-transform: capitalize;
-    animation: w 3s infinite linear;
+  font-size: 40px;
+  text-transform: capitalize;
+}
+.par {
+  position: relative;
+  margin: 10px 5px;
+  width: 400px;
+  height: 15px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: white;
+  &&::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: green;
+    animation: l 3s linear;
+    animation-iteration-count: 1;
   }
-@keyframes w {
-  0% {
-    transform: translateY(0px);
+}
+@keyframes l {
+  from {
+    width: 0%;
   }
+  to {
+    width: 100%;
+  }
+}
+@keyframes p {
   50% {
-    transform: translateY(15px);
+    font-size: 120px;
   }
 }
 @media (max-width: 500px) {
