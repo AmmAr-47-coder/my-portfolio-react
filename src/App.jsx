@@ -15,7 +15,7 @@ const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlwcmxia2RkbWdvbHJua2hxd3JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU4MDA1ODIsImV4cCI6MjA2MTM3NjU4Mn0.x5ueV-3t0uzsS9ifzQRO9m8dT5Iv8OF2qu0_n3M-Dwk";
 const supabase = createClient(supabaseUrl, supabaseKey);
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [datat, setDatat] = useState([]);
   const [datap, setDatap] = useState([]);
@@ -67,7 +67,7 @@ function App() {
     const handlePageLoad = () => {
       setLoading(false);
     };
-    setTimeout(() => handlePageLoad(), 1000);
+    setTimeout(() => handlePageLoad(), 3000);
   }, []);
   return (
     <div>
