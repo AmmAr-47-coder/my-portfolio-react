@@ -2,74 +2,83 @@ import "./home.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useRef, useEffect } from "react";
+
 function Home({ img, admin, supabase }) {
-  const g = useRef(null);
-  const imginp = useRef(null);
-  const o = useRef(null);
+  const g = useRef(null); // صورة البروفايل
+  const imginp = useRef(null); // input لرفع الصور
+  const o = useRef(null); // buttons overlay
+  const formRef = useRef(null); // الفورم
+  const loadRef = useRef(null); // اللودينج
+
+  // AOS initialization
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
   }, []);
-  var TxtType = function (el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = "";
-    this.tick();
-    this.isDeleting = false;
-  };
 
-  TxtType.prototype.tick = function () {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
-
-    var that = this;
-    var delta = 200 - Math.random() * 100;
-
-    if (this.isDeleting) {
-      delta /= 2;
-    }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      delta = this.period;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === "") {
+  // typewriter effect
+  useEffect(() => {
+    var TxtType = function (el, toRotate, period) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.loopNum = 0;
+      this.period = parseInt(period, 10) || 2000;
+      this.txt = "";
+      this.tick();
       this.isDeleting = false;
-      this.loopNum++;
-      delta = 500;
-    }
+    };
 
-    setTimeout(function () {
-      that.tick();
-    }, delta);
-  };
+    TxtType.prototype.tick = function () {
+      var i = this.loopNum % this.toRotate.length;
+      var fullTxt = this.toRotate[i];
 
-  window.onload = function () {
-    var elements = document.getElementsByClassName("typewrite");
-    for (var i = 0; i < elements.length; i++) {
-      var toRotate = elements[i].getAttribute("data-type");
-      var period = elements[i].getAttribute("data-period");
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+
+      var that = this;
+      var delta = 200 - Math.random() * 100;
+
+      if (this.isDeleting) {
+        delta /= 2;
+      }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === "") {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+
+      setTimeout(function () {
+        that.tick();
+      }, delta);
+    };
+
+    const elements = document.getElementsByClassName("typewrite");
+    for (let i = 0; i < elements.length; i++) {
+      let toRotate = elements[i].getAttribute("data-type");
+      let period = elements[i].getAttribute("data-period");
       if (toRotate) {
         new TxtType(elements[i], JSON.parse(toRotate), period);
       }
     }
-    // INJECT CSS
-    var css = document.createElement("style");
+
+    const css = document.createElement("style");
     css.type = "text/css";
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
-  };
+  }, []);
+
+  // حفظ الصورة
   async function saveimg() {
     const file = imginp.current.files[0];
     if (!file) {
@@ -79,36 +88,39 @@ function Home({ img, admin, supabase }) {
 
     const filePath = `public/${Date.now()}_${file.name}`;
 
-    const { data, error } = await supabase.storage
+    const { error } = await supabase.storage
       .from("imgpro")
       .upload(filePath, file);
+
     if (error) {
       console.error("خطأ في رفع الصورة:", error);
       alert("فشل رفع الصورة!");
       return;
     }
+
     const imageUrl = supabase.storage.from("imgpro").getPublicUrl(filePath)
       .data.publicUrl;
-    const { data: dd, error: de } = await supabase
-      .from("imgpro")
-      .update({ url: imageUrl })
-      .eq("id", 30);
-    const { data: sData, error: serror } = await supabase
-      .from("imgpro")
-      .select("url");
+
+    // إدخال رابط الصورة في الجدول بدل التحديث على id ثابت
+    await supabase.from("imgpro").insert([{ url: imageUrl }]);
+
+    alert("تم حفظ الصورة بنجاح!");
   }
+
   return (
     <div>
       <div className="home" id="dd">
         <div className="img fade-left" data-aos="fade-left" id="img">
-          <div className="loading" id="load"></div>
+          <div className="loading" ref={loadRef}></div>
           <img
-            src={img.map((item) => item.url)}
-            alt="kjh"
+            src={img[0]?.url}
+            alt="profile"
             ref={g}
             onLoad={() => {
-              load.style.opacity = "0";
-              load.style.zIndex = "0";
+              if (loadRef.current) {
+                loadRef.current.style.opacity = "0";
+                loadRef.current.style.zIndex = "0";
+              }
             }}
           />
           <div className="btnnn" ref={o}>
@@ -125,15 +137,15 @@ function Home({ img, admin, supabase }) {
               id="btmn"
               onClick={() => {
                 o.current.style.display = "none";
-                g.current.src = `${img.map((item) => item.url)}`;
-                formimg.reset();
+                g.current.src = `${img[0]?.url}`;
+                formRef.current.reset();
               }}
             >
               cancel
             </button>
           </div>
           {admin && (
-            <form id="formimg">
+            <form ref={formRef}>
               <input
                 ref={imginp}
                 type="file"
@@ -141,7 +153,7 @@ function Home({ img, admin, supabase }) {
                 onChange={(e) => {
                   if (e.target.files[0]) {
                     o.current.style.display = "flex";
-                    g.current.src = `${URL.createObjectURL(e.target.files[0])}`;
+                    g.current.src = URL.createObjectURL(e.target.files[0]);
                   }
                 }}
               />
@@ -170,7 +182,7 @@ function Home({ img, admin, supabase }) {
                 href="#"
                 className="typewrite"
                 data-period="2000"
-                data-type='[ "HTMl", "CSS", "JAVA SCRIPT.", "REACT.JS","GIT" ]'
+                data-type='[ "HTML", "CSS", "JavaScript", "React.js", "Git" ]'
               >
                 <span className="wrap"></span>
               </a>
