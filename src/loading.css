@@ -46,13 +46,3 @@
     width: 100%;
   }
 }
-@keyframes p {
-  50% {
-    font-size: 120px;
-  }
-}
-@media (max-width: 500px) {
-  .loo {
-    font-size: 30px;
-  }
-}
